@@ -1,6 +1,6 @@
 /*
-	Simple A.I. program that simulates a robot's performace
-	vacuuming a floor or 4 inline squares.
+	Simple A.I. program that simulates a robot's performance
+	vacuuming a floor of 4 inline squares.
 
 */
 import java.util.Scanner;
