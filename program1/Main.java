@@ -1,5 +1,5 @@
 /*
-	Simple A.I. program that simulates a robot's performace
+	Simple A.I. program that simulates a robot's performance
 	vacuuming a floor of 4 inline squares.
 
 */
