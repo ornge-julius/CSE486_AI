@@ -42,7 +42,7 @@ public class Node{
 		this.hasMessage = false;
 		this.row = r;
 		this.col = c;
-		this.cost = 0;
+		this.cost = 0.0;
 		this.pRow = 0;
 		this.pCol = 0;
 		this.depth = 0;
@@ -56,11 +56,11 @@ public class Node{
 	//due to the way the board has to be
 	//parsed and set up.
 
-	public void setCost(int cost){
+	public void setCost(double cost){
 		this.cost = cost;
 	}
 
-	public void setParent(int pRow, intpCol){
+	public void setParent(int pRow, int pCol){
 		this.pRow = pRow;
 		this.pCol = pCol;
 	}
@@ -86,7 +86,14 @@ public class Node{
 		//return array of messages gotten
 		return this.message.toArray();
 	}
+	
+	public boolean hasMessage(){
+		return this.hasMessage;
+	}
 
+	public void setMessage(){
+		this.hasMessage = true;
+	}
 }
 
 
