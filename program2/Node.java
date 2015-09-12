@@ -1,3 +1,5 @@
+
+
 import java.util.Comparator;
 import java.util.ArrayList;
 public class Node{
@@ -18,13 +20,15 @@ public class Node{
 	public int pCol;
 	public int depth;
 	public double cost;
+	boolean hasMessage;
 	ArrayList<String> message;
 	//not sure how to use this one
 	String action;
 
 	public Node(int r, int c, int pr, int pc, double co){
+		this.hasMessage = false;
 		this.row = r;
-		this.col = col;
+		this.col = c;
 		this.cost = co;
 		this.pRow = pr;
 		this.pCol = pc;
@@ -32,6 +36,33 @@ public class Node{
 		this.action = "";
 		this.message = new ArrayList<String>();
 
+	}
+
+	public Node(int r, int c){
+		this.hasMessage = false;
+		this.row = r;
+		this.col = c;
+		this.cost = 0.0;
+		this.pRow = 0;
+		this.pCol = 0;
+		this.depth = 0;
+		this.action = "";
+		this.message = new ArrayList<String>();
+
+	
+	}
+
+	//must have proper getters and setters
+	//due to the way the board has to be
+	//parsed and set up.
+
+	public void setCost(double cost){
+		this.cost = cost;
+	}
+
+	public void setParent(int pRow, int pCol){
+		this.pRow = pRow;
+		this.pCol = pCol;
 	}
 
 	public int[] getParent(){
@@ -52,9 +83,17 @@ public class Node{
 	}
 
 	public Object[] messages(){
+		//return array of messages gotten
 		return this.message.toArray();
 	}
+	
+	public boolean hasMessage(){
+		return this.hasMessage;
+	}
 
+	public void setMessage(){
+		this.hasMessage = true;
+	}
 }
 
 
