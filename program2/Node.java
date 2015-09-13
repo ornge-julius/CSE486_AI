@@ -21,9 +21,11 @@ public class Node{
 	public int depth;
 	public double cost;
 	boolean hasMessage;
-	ArrayList<String> message;
+	public int numMess;
+	public Node parent;
 	//not sure how to use this one
-	String action;
+	public String action;
+	public String state;
 
 	public Node(int r, int c, int pr, int pc, double co){
 		this.hasMessage = false;
@@ -34,7 +36,8 @@ public class Node{
 		this.pCol = pc;
 		this.depth = 0;
 		this.action = "";
-		this.message = new ArrayList<String>();
+		this.parent = null;
+		this.state = "";
 
 	}
 
@@ -47,15 +50,24 @@ public class Node{
 		this.pCol = 0;
 		this.depth = 0;
 		this.action = "";
-		this.message = new ArrayList<String>();
+		this.parent = null;
+		this.numMess = 0;
+		this.state = "";
 
-	
 	}
 
 	//must have proper getters and setters
 	//due to the way the board has to be
 	//parsed and set up.
 
+	public int getRow(){
+		return this.row;
+	}
+
+	public int getCol(){
+		return this.col;
+	}
+	
 	public void setCost(double cost){
 		this.cost = cost;
 	}
@@ -65,9 +77,8 @@ public class Node{
 		this.pCol = pCol;
 	}
 
-	public int[] getParent(){
-		int [] par = {this.pRow, this.pCol};
-		return par;
+	public Node getParent(){
+		return this.parent;
 	}
 
 	public int getDepth(){
@@ -78,15 +89,6 @@ public class Node{
 		return this.cost;
 	}
 
-	public void gotMessage(String s){
-		this.message.add(s);
-	}
-
-	public Object[] messages(){
-		//return array of messages gotten
-		return this.message.toArray();
-	}
-	
 	public boolean hasMessage(){
 		return this.hasMessage;
 	}
@@ -94,6 +96,32 @@ public class Node{
 	public void setMessage(){
 		this.hasMessage = true;
 	}
+	
+	public void gotMessage(){
+		this.numMess += 1;
+		this.hasMessage = false;
+	}
+	
+	public void setParent(Node parent){
+		this.parent = parent;
+	}
+	
+	public void setAction(String a){
+		this.action = a;
+	}
+	
+	public String getAction(){
+		return this.action;
+	}
+
+	public void setState(int row, int col, int messages){
+		this.state = Integer.toString(row) + Integer.toString(col) + Integer.toString(messages);
+	}
+	
+	public String getState(){
+		return this.state;
+	}
+
 }
 
 
